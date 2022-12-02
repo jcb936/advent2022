@@ -1,11 +1,11 @@
 fn play_get_total_part_1(rounds : &Vec<(i32, i32)>) -> i32 {
     let mut total : i32 = 0;
     for i in rounds {
-        total += (i.1 + 1) as i32;
+        total += (i.1 + 1);
         if i.0 == i.1 {
-            total += 3  as i32;
+            total += 3; // we draw
         } else if i.1 == ((i.0 + 1) % 3) {
-            total += 6  as i32;
+            total += 6; // we win
         }
     }
 
@@ -17,9 +17,9 @@ fn play_get_total_part_2(rounds : &Vec<(i32, i32)>) -> i32 {
     for i in rounds {
         match i.1 {
             // rust doesn't have a ternary operator :(
-            0 => total += if i.0 - 1 < 0 {2} else {(i.0 - 1) % 3},
-            1 => total += i.0 + 3,
-            2 => total += ((i.0 + 1) % 3) + 6,
+            0 => total += if i.0 - 1 < 0 {2} else {(i.0 - 1) % 3}, // we lose
+            1 => total += i.0 + 3, // we draw
+            2 => total += ((i.0 + 1) % 3) + 6, // we win
             _ => {}
         }
         total += 1;
