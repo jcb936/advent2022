@@ -6,7 +6,7 @@ const START_OF_MESSAGE_SIZE: usize = 14;
 
 fn get_signal_index(input: &str, size: usize) -> usize {
     let mut result = 0;
-    let mut char_set: HashSet<u8> = HashSet::with_capacity(START_OF_MESSAGE_SIZE);
+    let mut char_set: HashSet<u8> = HashSet::with_capacity(size);
 
     for n in (size - 1)..(input.len()) {
         for i in (n + 1 - size)..(n + 1) {
